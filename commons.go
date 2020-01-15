@@ -62,9 +62,10 @@ func GetLogger() *logrus.Logger {
 	}
 	// or command-line flag
 	if env == "PRODUCTION" {
+		logger.SetLevel(logrus.InfoLevel)
 		logger.SetFormatter(&logrus.JSONFormatter{})
 	} else {
-		logger.SetReportCaller(true)
+		logger.SetLevel(logrus.DebugLevel)
 		// The TextFormatter is default, you don't actually have to do this.
 		logger.SetFormatter(&logrus.TextFormatter{})
 	}
